@@ -55,9 +55,7 @@ function EgovAdminUsageList(props) {
                     const listIdx = itemIdxByPage(resultCnt , currentPageNo, pageSize, index);
 
                     mutListTag.push(
-                        <Link
-                            to=
-                            state=                            key={listIdx}
+                        <Link key={listIdx}
                             className="list_item">
                             <div>{listIdx}</div>
                             <div>{item.bbsNm}</div>

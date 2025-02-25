@@ -12,17 +12,21 @@ spring:
         - id: ApplicationProcessing
           uri: http://localhost:8082
           predicates:
-            - Path=/applications/**, /applicationSummaries/**, /applicationDetails/**
+            - Path=/applications/**, 
         - id: DataCollection
           uri: http://localhost:8083
           predicates:
-            - Path=/dataCollectors/**, /dataCollectionTaskSummaries/**, /dataCollectionTaskDetails/**, /dataCollectionLogs/**
+            - Path=/dataCollectors/**, 
         - id: DocumentIssuance
           uri: http://localhost:8084
           predicates:
-            - Path=/pdfDocuments/**, /electronicSignatures/**, /pdfDocumentViews/**, /signatureStatuses/**
-        - id: frontend
+            - Path=/pdfDocuments/**, /electronicSignatures/**, 
+        - id: egov-default-backend
           uri: http://localhost:8080
+          predicates:
+            - Path=/board/**, /auth/**
+        - id: frontend
+          uri: http://localhost:3000
           predicates:
             - Path=/**
 #>>> API Gateway / Routes
@@ -57,6 +61,9 @@ spring:
           uri: http://documentIssuance:8080
           predicates:
             - Path=/pdfDocuments/**, /electronicSignatures/**, 
+        - id: egov-default-backend
+          uri: http://default-backend:8080
+          predicates:        
         - id: frontend
           uri: http://frontend:8080
           predicates:

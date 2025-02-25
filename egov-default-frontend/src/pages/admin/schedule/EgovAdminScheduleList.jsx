@@ -150,7 +150,7 @@ function EgovAdminScheduleList(props) {
                             if (scheduleList.length > 0) {//일정 있는 경우
                                 return (
                                     <td key={keyIdx++}>
-                                        <Link to= state= className="day" key={keyIdx++}>{day}</Link><br />
+                                        <Link className="day" key={keyIdx++}>{day}</Link><br />
                                         {
                                             scheduleList.map((schedule, scheduleIdx) => {
                                                 let iBeginDate = Number(schedule.schdulBgnde.substring(0, 8));
@@ -160,8 +160,7 @@ function EgovAdminScheduleList(props) {
                                                 if (iUseDate >= iBeginDate && iUseDate <= iEndDate) {
                                                     return (
                                                         <>
-                                                            <Link to= 
-                                                            state=
+                                                            <Link
                                                             key={keyIdx++}>{schedule.schdulNm}
                                                             </Link>
                                                             <br />
@@ -175,7 +174,7 @@ function EgovAdminScheduleList(props) {
                             } else {//일정 없는 경우
                                 return (
                                     <td key={keyIdx++}>
-                                        <Link to= state= className="day" key={keyIdx++}>{day}</Link><br />
+                                        <Link className="day" key={keyIdx++}>{day}</Link><br />
                                     </td>);
                             }
                         } else if (day === 0) {// 이전달/다음달 구현

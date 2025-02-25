@@ -139,7 +139,7 @@ function EgovAdminGalleryDetail(props) {
                             </div>
 
 
-                            <div className="board_btn_area">
+                            {/* <div className="board_btn_area">
 							{masterBoard.bbsUseFlag === 'Y' &&
                                 <div className="left_col btn3">
                                     <Link to= 
@@ -158,7 +158,7 @@ function EgovAdminGalleryDetail(props) {
                                     <Link to= 
                                         state=                                        className="btn btn_blue_h46 w_100">목록</Link>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         {/* <!-- 게시판 상세보기 --> */}
 

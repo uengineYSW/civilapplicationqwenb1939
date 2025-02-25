@@ -50,7 +50,7 @@ function EgovNoticeList(props) {
                                 applicationNumber: resp[i].applicationNumber,
                                 searchCondition: searchCondition}}                            
                             className="list_item">
-                            <div>{resp[i]applicationNumber}</div>
+                            <div>{resp[i].applicationNumber}</div>
                             <div>{resp[i].serviceType}</div>
                             <div>{resp[i].applicationDate}</div>
                             <div>{resp[i].status}</div>

@@ -50,7 +50,7 @@ function EgovNoticeList(props) {
                                 dataCollectorId: resp[i].dataCollectorId,
                                 searchCondition: searchCondition}}                            
                             className="list_item">
-                            <div>{resp[i]dataCollectorId}</div>
+                            <div>{resp[i].dataCollectorId}</div>
                             <div>{resp[i].status}</div>
                             <div>{resp[i].schedule}</div>
                             <div>{resp[i].nextRunTime}</div>

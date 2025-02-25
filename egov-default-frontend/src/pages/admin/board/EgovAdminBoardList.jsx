@@ -57,8 +57,6 @@ function EgovAdminBoardList(props) {
 
                     mutListTag.push(
                         <Link
-                            to=
-                            state=                            key={listIdx}
                             className="list_item">
                             <div>{listIdx}</div>
                             <div>{item.bbsNm}</div>

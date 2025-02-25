@@ -11,9 +11,9 @@ import ApplicationEdit from 'pages/ApplicationProcessing/ApplicationEdit';
 import DataCollectorList from 'pages/DataCollection/DataCollectorList';
 import DataCollectorDetail from 'pages/DataCollection/DataCollectorDetail';
 import DataCollectorEdit from 'pages/DataCollection/DataCollectorEdit';
-import PDFDocumentList from 'pages/DocumentIssuance/PDFDocumentList';
-import PDFDocumentDetail from 'pages/DocumentIssuance/PDFDocumentDetail';
-import PDFDocumentEdit from 'pages/DocumentIssuance/PDFDocumentEdit';
+// import PDFDocumentList from 'pages/DocumentIssuance/PDFDocumentList';
+// import PDFDocumentDetail from 'pages/DocumentIssuance/PDFDocumentDetail';
+// import PDFDocumentEdit from 'pages/DocumentIssuance/PDFDocumentEdit';
 import ElectronicSignatureList from 'pages/DocumentIssuance/ElectronicSignatureList';
 import ElectronicSignatureDetail from 'pages/DocumentIssuance/ElectronicSignatureDetail';
 import ElectronicSignatureEdit from 'pages/DocumentIssuance/ElectronicSignatureEdit';
@@ -158,9 +158,9 @@ const SecondRoutes = () => {
           <Route path="/DataCollection/DataCollectorEdit" element={<DataCollectorEdit />} />
           <Route path="/DataCollection/DataCollectorDetail" element={<DataCollectorDetail />} />
 
-          <Route path="/DocumentIssuance/pdfDocuments" element={<PDFDocumentList />} />
+          {/* <Route path="/DocumentIssuance/pdfDocuments" element={<PDFDocumentList />} />
           <Route path="/DocumentIssuance/PDFDocumentEdit" element={<PDFDocumentEdit />} />
-          <Route path="/DocumentIssuance/PDFDocumentDetail" element={<PDFDocumentDetail />} />
+          <Route path="/DocumentIssuance/PDFDocumentDetail" element={<PDFDocumentDetail />} /> */}
 
           <Route path="/DocumentIssuance/electronicSignatures" element={<ElectronicSignatureList />} />
           <Route path="/DocumentIssuance/ElectronicSignatureEdit" element={<ElectronicSignatureEdit />} />

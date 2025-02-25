@@ -50,7 +50,7 @@ function EgovNoticeList(props) {
                                 signatureId: resp[i].signatureId,
                                 searchCondition: searchCondition}}                            
                             className="list_item">
-                            <div>{resp[i]signatureId}</div>
+                            <div>{resp[i].signatureId}</div>
                             <div>{resp[i].documentId}</div>
                             <div>{resp[i].userId}</div>
                             <div>{resp[i].signatureDate}</div>
