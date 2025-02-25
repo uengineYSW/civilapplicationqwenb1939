@@ -1,0 +1,65 @@
+name: github-action
+run-name: ${{ github.actor }} is out building GitHub Actions
+
+on:
+  push:
+    # Pattern matched against refs/tags
+    tags:        
+      - '**' 
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build Maven Projects
+        run: |
+          mvn clean package -f ./ApplicationProcessing/pom.xml
+          mvn clean package -f ./DataCollection/pom.xml
+          mvn clean package -f ./DocumentIssuance/pom.xml
+
+      - name: Docker Build and push for ApplicationProcessing
+        uses: docker/build-push-action@v4
+        with:
+          context: ./ApplicationProcessing
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/applicationprocessing:latest
+            ghcr.io/${{ github.repository }}/applicationprocessing:${{ github.ref_name }}
+            
+      - name: Docker Build and push for DataCollection
+        uses: docker/build-push-action@v4
+        with:
+          context: ./DataCollection
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/datacollection:latest
+            ghcr.io/${{ github.repository }}/datacollection:${{ github.ref_name }}
+            
+      - name: Docker Build and push for DocumentIssuance
+        uses: docker/build-push-action@v4
+        with:
+          context: ./DocumentIssuance
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/documentissuance:latest
+            ghcr.io/${{ github.repository }}/documentissuance:${{ github.ref_name }}
+            

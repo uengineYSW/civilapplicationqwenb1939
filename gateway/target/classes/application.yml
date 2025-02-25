@@ -1,0 +1,76 @@
+server:
+  port: 8088
+
+---
+
+spring:
+  profiles: default
+  cloud:
+    gateway:
+#<<< API Gateway / Routes
+      routes:
+        - id: ApplicationProcessing
+          uri: http://localhost:8082
+          predicates:
+            - Path=/applications/**, /applicationSummaries/**, /applicationDetails/**
+        - id: DataCollection
+          uri: http://localhost:8083
+          predicates:
+            - Path=/dataCollectors/**, /dataCollectionTaskSummaries/**, /dataCollectionTaskDetails/**, /dataCollectionLogs/**
+        - id: DocumentIssuance
+          uri: http://localhost:8084
+          predicates:
+            - Path=/pdfDocuments/**, /electronicSignatures/**, /pdfDocumentViews/**, /signatureStatuses/**
+        - id: frontend
+          uri: http://localhost:8080
+          predicates:
+            - Path=/**
+#>>> API Gateway / Routes
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+
+---
+
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: ApplicationProcessing
+          uri: http://applicationProcessing:8080
+          predicates:
+            - Path=/applications/**, 
+        - id: DataCollection
+          uri: http://dataCollection:8080
+          predicates:
+            - Path=/dataCollectors/**, 
+        - id: DocumentIssuance
+          uri: http://documentIssuance:8080
+          predicates:
+            - Path=/pdfDocuments/**, /electronicSignatures/**, 
+        - id: frontend
+          uri: http://frontend:8080
+          predicates:
+            - Path=/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+server:
+  port: 8080
